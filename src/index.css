@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-graphite: #0A0A0E;
+  --color-cyber-purple: #EF4444; /* remap purple to red to preserve default styles */
+  --color-cyber-red: #EF4444;
+  --color-neon-purple-dark: #991B1B; /* remap dark purple to dark red */
+  --color-neon-red-dark: #991B1B;
+
+  --animate-neon-pulse: neon-pulse-red 2s infinite alternate;
+  --animate-neon-pulse-red: neon-pulse-red 2s infinite alternate;
+  --animate-glitch: glitch 1.5s infinite linear alternate-reverse;
+  --animate-scanline: scanline 8s linear infinite;
+  
+  --shadow-neon-purple: 0 0 10px rgba(239, 68, 68, 0.6), 0 0 20px rgba(239, 68, 68, 0.3);
+  --shadow-neon-red: 0 0 10px rgba(239, 68, 68, 0.6), 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+@keyframes neon-pulse-red {
+  0% {
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.4), inset 0 0 4px rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.8), inset 0 0 8px rgba(239, 68, 68, 0.4);
+    border-color: rgba(239, 68, 68, 0.9);
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 0 0 rgba(239, 68, 68, 0.5), -2px 0 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    text-shadow: -1px 0 0 rgba(239, 68, 68, 0.5), 2px 0 0 rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    text-shadow: 2px 0 0 rgba(239, 68, 68, 0.5), -1px 0 0 rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Base custom styles */
+body {
+  background-color: #000000;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(239, 68, 68, 0.12) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(239, 68, 68, 0.08) 0px, transparent 40%),
+    radial-gradient(at 50% 80%, rgba(239, 68, 68, 0.09) 0px, transparent 55%);
+  background-attachment: fixed;
+  color: #E2E8F0;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+/* Custom cyber scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #0A0A0E;
+  border: 1px solid #EF4444;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #EF4444;
+}
+
+/* Cybernetic Grid Overlay (Unified Red) */
+.cyber-grid, .cyber-grid-red {
+  background-image: 
+    linear-gradient(rgba(239, 68, 68, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(239, 68, 68, 0.035) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: center;
+}
+
+/* Premium Glowing Utilities */
+.glow-text-purple, .glow-text-red {
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.85), 0 0 20px rgba(239, 68, 68, 0.45);
+}
+
+.glow-border-purple, .glow-border-red {
+  border-color: #EF4444;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.4), inset 0 0 5px rgba(239, 68, 68, 0.2);
+}
+
+/* Glassmorphism cyber dashboard panel (Unified Red) */
+.cyber-panel, .cyber-panel-red {
+  background: rgba(10, 10, 14, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+/* Interrogation Scanline overlay */
+.scanline-overlay::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(239, 68, 68, 0.03), rgba(0, 0, 0, 0.01), rgba(239, 68, 68, 0.03));
+  z-index: 999;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* CRT monitor curve effect */
+.crt-effect {
+  position: relative;
+  overflow: hidden;
+}
+.crt-effect::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(circle, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: 10;
+  pointer-events: none;
+}
